@@ -11,9 +11,10 @@ node_modules/upgrade:
 	yarn upgrade --latest
 
 test:
-	yarn run test
+	yarn run test:script
+	yarn run test:lint
 
-test-mru-watch:
+test-watch:
 	$(shell npm bin)/nodemon -w src/ -w test/ -e ts -x "make -i test-mru"
 	
 test-mru:
