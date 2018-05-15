@@ -1,16 +1,13 @@
 import "mocha";
 import * as assert from "power-assert";
 
-describe("Object destruction", () => {
+describe("test/destructions", () => {
     context("Property Naming", () => {
         it("can give different names to properties", () => {
             const { a: varA, b: varB } = { a: 1, b: 2 };
 
             assert.strictEqual(varA, 1);
             assert.strictEqual(varB, 2);
-
-            const ary = [1, 2, 3];
-            assert(ary.indexOf(0) === 2);
         });
     });
     context("Default Values", () => {

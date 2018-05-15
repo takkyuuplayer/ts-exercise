@@ -1,6 +1,6 @@
 import * as assert from "power-assert";
 
-describe("true", () => {
+describe("test/hello", () => {
     it("should pass assert", () => {
         assert(true);
     });
