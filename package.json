@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "test:script": "mocha **/*.spec.ts",
-    "test:lint": "tslint -p tsconfig.json"
+    "test": "mocha **/*.spec.ts",
+    "lint": "tslint -p tsconfig.json"
   },
   "devDependencies": {
     "mocha": "^5.0.0",
