@@ -21,7 +21,6 @@
     "@types/node": "^10.5.6",
     "@types/power-assert": "^1.5.0",
     "assert": "^1.4.1",
-    "espower-typescript": "^9.0.0",
     "tslint": "^5.11.0"
   }
 }
