@@ -1,5 +1,6 @@
 *.js
 *.map
+!/jest.config.js
 
 # Created by https://www.gitignore.io/api/node
 
