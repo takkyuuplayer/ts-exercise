@@ -5,6 +5,9 @@ cache:
   yarn: true
   directories:
     - node_modules
+install:
+    - make
+    - make node_modules/upgrade
 script:
   - yarn test
   - yarn lint

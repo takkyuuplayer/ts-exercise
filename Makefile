@@ -2,7 +2,7 @@
 
 TEST_WATCH_COUNT=1
 
-all: node_modules node_modules/upgrade
+all: node_modules
 
 node_modules:
 	yarn install
