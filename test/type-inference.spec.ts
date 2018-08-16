@@ -1,11 +1,15 @@
-describe("test/type-inference", () => {
-    describe("Best common type", () => {
-        const x = [0, 1, null]; // Defined as x: number | null
-        it("defines union of types as variable's type", () => {
-            // x[1] = {}; compile error
-            x[3] = 1.5;
-            x[4] = null;
-            expect(x).toStrictEqual([0, 1, null, 1.5, null]);
-        });
+describe("type inference", () => {
+    it("infere type of variable", () => {
+        const x = 3;
+        expect(typeof x).toBe("number");
+
+        const y = "string";
+        expect(typeof y).toBe("string");
+    });
+    it("uses union type", () => {
+        const x = [0, 1, null];
+        const y: typeof x = [null];
+        const z: typeof x = [0];
+        // const w: typeof x = ["string"]; // forbidden
     });
 });
