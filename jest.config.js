@@ -1,5 +1,5 @@
 module.exports = {
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
     transform: {
         '^.+\\.tsx?$': 'ts-jest'
     },
@@ -17,4 +17,5 @@ module.exports = {
         'src/**/*.{ts,tsx,js,jsx}',
         '!src/**/*.d.ts',
     ],
+    setupTestFrameworkScriptFile: "./jest.enzyme.js",
 };
