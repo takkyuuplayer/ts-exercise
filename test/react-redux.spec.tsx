@@ -70,36 +70,36 @@ describe("react-redux", () => {
             expect(wrapper.find("span").at(0).text()).toBe("1");
         });
     });
-    describe("Redux connected Component", () => {
-        type RootState = StateType<typeof reducer>;
-        type RootAction = counterActions; // Should be union
+    /*     describe("Redux connected Component", () => {
+            type RootState = StateType<typeof reducer>;
+            type RootAction = counterActions; // Should be union
 
-        const mapStateToProps = (state: RootState) => ({
-            count: state.count,
-        });
-        const mapDispatchToProps = (dispatch: (action: RootAction) => any) => ({
-            onIncrement: () => dispatch(increment()),
-        });
-        const Connected = connect(
-            mapStateToProps,
-            mapDispatchToProps,
-        )(Counter);
+            const mapStateToProps = (state: RootState) => ({
+                count: state.count,
+            });
+            const mapDispatchToProps = (dispatch: (action: RootAction) => any) => ({
+                onIncrement: () => dispatch(increment()),
+            });
+            const Connected = connect(
+                mapStateToProps,
+                mapDispatchToProps,
+            )(Counter);
 
-        const store = createStore(reducer);
+            const store = createStore(reducer);
 
-        const wrapper = mount(
-            <Provider store={store}>
-                <Connected />
-            </Provider>,
-        );
-        it("has initial state", () => {
-            expect(wrapper.find("span").at(0).text()).toBe("0");
-        });
+            const wrapper = mount(
+                <Provider store={store}>
+                    <Connected />
+                </Provider>,
+            );
+            it("has initial state", () => {
+                expect(wrapper.find("span").at(0).text()).toBe("0");
+            });
 
-        it("has has increment button", () => {
-            wrapper.find("button").at(0).simulate("click");
+            it("has has increment button", () => {
+                wrapper.find("button").at(0).simulate("click");
 
-            expect(wrapper.find("span").at(0).text()).toBe("1");
-        });
-    });
+                expect(wrapper.find("span").at(0).text()).toBe("1");
+            });
+        }); */
 });
