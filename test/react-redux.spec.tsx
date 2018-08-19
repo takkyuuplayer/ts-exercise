@@ -1,4 +1,4 @@
-import { shallow } from "enzyme";
+import { mount, shallow } from "enzyme";
 import * as React from "react";
 import { connect, Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
@@ -21,7 +21,7 @@ describe("react-redux", () => {
         const callback = sinon.spy();
         const wrapper = shallow(<Counter count={0} onIncrement={callback} />);
         it("has count", () => {
-            expect(wrapper.find("span").at(0).text).toBe(0);
+            expect(wrapper.find("span").at(0).text()).toBe("0");
         });
         it("has increment button", () => {
             wrapper.find("button").at(0).simulate("click");
@@ -61,13 +61,13 @@ describe("react-redux", () => {
     describe("Statefull Component", () => {
         const wrapper = shallow(<StatefullCounter />);
         it("has initial state", () => {
-            expect(wrapper.find("span").at(0).text).toBe(0);
+            expect(wrapper.find("span").at(0).text()).toBe("0");
         });
 
         it("has has increment button", () => {
             wrapper.find("button").at(0).simulate("click");
 
-            expect(wrapper.find("span").at(0).text).toBe(1);
+            expect(wrapper.find("span").at(0).text()).toBe("1");
         });
     });
     describe("Redux connected Component", () => {
@@ -87,19 +87,19 @@ describe("react-redux", () => {
 
         const store = createStore(reducer);
 
-        const wrapper = shallow(
+        const wrapper = mount(
             <Provider store={store}>
                 <Connected />
             </Provider>,
         );
         it("has initial state", () => {
-            expect(wrapper.find("span").at(0).text).toBe(0);
+            expect(wrapper.find("span").at(0).text()).toBe("0");
         });
 
         it("has has increment button", () => {
             wrapper.find("button").at(0).simulate("click");
 
-            expect(wrapper.find("span").at(0).text).toBe(1);
+            expect(wrapper.find("span").at(0).text()).toBe("1");
         });
     });
 });
