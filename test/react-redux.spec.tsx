@@ -1,6 +1,7 @@
 import { shallow } from "enzyme";
 import * as React from "react";
-import { combineReducers } from "redux";
+import { connect, Provider } from "react-redux";
+import { combineReducers, createStore } from "redux";
 import sinon from "sinon";
 import { ActionType, createAction, createStandardAction, getType, StateType } from "typesafe-actions";
 
@@ -59,6 +60,38 @@ describe("react-redux", () => {
     }
     describe("Statefull Component", () => {
         const wrapper = shallow(<StatefullCounter />);
+        it("has initial state", () => {
+            expect(wrapper.find("span").at(0).text).toBe(0);
+        });
+
+        it("has has increment button", () => {
+            wrapper.find("button").at(0).simulate("click");
+
+            expect(wrapper.find("span").at(0).text).toBe(1);
+        });
+    });
+    describe("Redux connected Component", () => {
+        type RootState = StateType<typeof reducer>;
+        type RootAction = counterActions; // Should be union
+
+        const mapStateToProps = (state: RootState) => ({
+            count: state.count,
+        });
+        const mapDispatchToProps = (dispatch: (action: RootAction) => any) => ({
+            onIncrement: () => dispatch(increment()),
+        });
+        const Connected = connect(
+            mapStateToProps,
+            mapDispatchToProps,
+        )(Counter);
+
+        const store = createStore(reducer);
+
+        const wrapper = shallow(
+            <Provider store={store}>
+                <Connected />
+            </Provider>,
+        );
         it("has initial state", () => {
             expect(wrapper.find("span").at(0).text).toBe(0);
         });
