@@ -1,3 +1,4 @@
+// https://github.com/piotrwitek/react-redux-typescript-guide#redux
 import { combineReducers, createStore } from "redux";
 import { ActionType, createAction, createStandardAction, getType, StateType } from "typesafe-actions";
 
