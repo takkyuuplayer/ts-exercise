@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
-import { ActionType, createAction, createStandardAction, getType } from "typesafe-actions";
+import { combineReducers, createStore } from "redux";
+import { ActionType, createAction, createStandardAction, getType, StateType } from "typesafe-actions";
 
 describe("typesafe-actions", () => {
     enum TodoActionTypes {
@@ -17,7 +17,7 @@ describe("typesafe-actions", () => {
         toggleTodo: createStandardAction(TodoActionTypes.toggleTodo)<number>(),
     };
 
-    describe("createAction", () => {
+    describe("action", () => {
         it("with type only", () => {
             expect(actions.completeAll()).toEqual({ type: TodoActionTypes.completeAll });
         });
@@ -38,35 +38,35 @@ describe("typesafe-actions", () => {
         });
     });
 
+    interface ITodo {
+        title: string;
+        id: number;
+        completed: boolean;
+    }
+    type TodosAction = ActionType<typeof actions>;
+    interface ITodosState {
+        readonly todos: ITodo[];
+    }
+    const todos = (state: ITodo[] = [], action: TodosAction) => {
+        switch (action.type) {
+            case getType(actions.addTodo):
+                return [...state, action.payload];
+            case getType(actions.completeAll):
+                return state.map((todo: ITodo) => ({ ...todo, completed: true }));
+            case getType(actions.toggleTodo):
+                return state.map((todo) => (
+                    todo.id === action.payload
+                        ? ({ ...todo, completed: !todo.completed })
+                        : todo
+                ));
+            default:
+                return state;
+        }
+    };
+    const reducer = combineReducers<ITodosState, TodosAction>({
+        todos,
+    });
     describe("reducer", () => {
-        interface ITodo {
-            title: string;
-            id: number;
-            completed: boolean;
-        }
-        type TodosAction = ActionType<typeof actions>;
-        interface ITodosState {
-            readonly todos: ITodo[];
-        }
-        const todos = (state: ITodo[] = [], action: TodosAction) => {
-            switch (action.type) {
-                case getType(actions.addTodo):
-                    return [...state, action.payload];
-                case getType(actions.completeAll):
-                    return state.map((todo: ITodo) => ({ ...todo, completed: true }));
-                case getType(actions.toggleTodo):
-                    return state.map((todo) => (
-                        todo.id === action.payload
-                            ? ({ ...todo, completed: !todo.completed })
-                            : todo
-                    ));
-                default:
-                    return state;
-            }
-        };
-        const reducer = combineReducers<ITodosState, TodosAction>({
-            todos,
-        });
         it("returns initial state", () => {
             expect(reducer(undefined, {} as any).todos).toStrictEqual([]);
         });
@@ -95,6 +95,23 @@ describe("typesafe-actions", () => {
                 { title: "Learn redux", id: 2, completed: true },
             ];
             expect(reducer(before, actions.completeAll()).todos).toStrictEqual(expected);
+        });
+    });
+
+    describe("store", () => {
+        type RootState = StateType<typeof reducer>;
+        type RootAction = TodosAction;
+        const store = createStore(reducer);
+
+        it("returns initial state", () => {
+            expect(store.getState()).toStrictEqual({ todos: [] });
+        });
+
+        it("can dispatch action", () => {
+            store.dispatch(actions.addTodo("Learn TypeScript"));
+            expect(store.getState()).toStrictEqual({
+                todos: [{ title: "Learn TypeScript", id: 1, completed: false }],
+            });
         });
     });
 });
