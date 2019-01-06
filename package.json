@@ -4,6 +4,8 @@
     "lint": "tslint -p tsconfig.json"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
     "typescript": "^3.0.1"
   },
   "name": "ts-exercise",

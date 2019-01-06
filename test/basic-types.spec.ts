@@ -40,20 +40,20 @@ describe("test/basic-types", () => {
     });
     describe("Enum", () => {
         it("Gives friendly names to set of numeric values", () => {
-            enum Color {Red, Green, Blue}
-            expect(Color).toEqual({Red: 0, Green: 1, Blue: 2, 0: "Red", 1: "Green", 2: "Blue"});
+            enum Color { Red, Green, Blue }
+            expect(Color).toEqual({ Red: 0, Green: 1, Blue: 2, 0: "Red", 1: "Green", 2: "Blue" });
         });
         it("can set inital value", () => {
-            enum Color {Red = 1, Green, Blue}
-            expect(Color).toEqual({Red: 1, Green: 2, Blue: 3, 1: "Red", 2: "Green", 3: "Blue"});
+            enum Color { Red = 1, Green, Blue }
+            expect(Color).toEqual({ Red: 1, Green: 2, Blue: 3, 1: "Red", 2: "Green", 3: "Blue" });
         });
         it("can set all values", () => {
-            enum Color {Red = 1, Green = 2, Blue = 4}
-            expect(Color).toEqual({Red: 1, Green: 2, Blue: 4, 1: "Red", 2: "Green", 4: "Blue"});
+            enum Color { Red = 1, Green = 2, Blue = 4 }
+            expect(Color).toEqual({ Red: 1, Green: 2, Blue: 4, 1: "Red", 2: "Green", 4: "Blue" });
         });
         it("can set partial values", () => {
-            enum Color {Red = 1, Green, Blue = 5}
-            expect(Color).toEqual({Red: 1, Green: 2, Blue: 5, 1: "Red", 2: "Green", 5: "Blue"});
+            enum Color { Red = 1, Green, Blue = 5 }
+            expect(Color).toEqual({ Red: 1, Green: 2, Blue: 5, 1: "Red", 2: "Green", 5: "Blue" });
         });
     });
     describe("Never", () => {
