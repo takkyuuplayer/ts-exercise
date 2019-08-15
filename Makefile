@@ -13,6 +13,7 @@ node_modules/upgrade:
 test:
 	yarn run test
 	yarn run lint
+	yarn run depcheck
 
 test-watch:
 	$(shell npm bin)/nodemon -w src/ -w test/ -e ts -x "make -i test-mru"

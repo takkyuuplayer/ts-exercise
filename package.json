@@ -1,11 +1,11 @@
 {
   "scripts": {
     "test": "jest",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "depcheck": "depcheck --ignores=@types/* ./"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.8.0",
+    "depcheck": "^0.8.3",
     "typescript": "^3.5.3"
   },
   "name": "ts-exercise",
