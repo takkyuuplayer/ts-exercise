@@ -17,5 +17,7 @@ module.exports = {
         'src/**/*.{ts,tsx,js,jsx}',
         '!src/**/*.d.ts',
     ],
-    setupTestFrameworkScriptFile: "./jest.enzyme.js",
+    setupFilesAfterEnv: [
+      "./jest.enzyme.js"
+    ]
 };
