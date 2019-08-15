@@ -1,5 +1,4 @@
-import { EPERM } from "constants";
-
+/* tslint:disable object-literal-sort-keys */
 describe("test/basic-types", () => {
   describe("Number", () => {
     it("can define decimal", () => {
