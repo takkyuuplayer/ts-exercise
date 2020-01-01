@@ -1,6 +1,6 @@
 // https://github.com/piotrwitek/react-redux-typescript-guide#redux
 import { combineReducers, createStore } from "redux";
-import { ActionType, createAction, createStandardAction, getType, StateType } from "typesafe-actions";
+import { ActionType, createAction, getType, StateType } from "typesafe-actions";
 
 describe("typesafe-actions", () => {
     enum TodoActionTypes {
@@ -10,13 +10,20 @@ describe("typesafe-actions", () => {
     }
     let id = 0;
     const actions = {
-        addTodo: createAction(TodoActionTypes.addTodo, (resolve) => {
-            id++;
-            return (title: string) => resolve({ title, id, completed: false });
-        }),
-        completeAll: createAction(TodoActionTypes.completeAll),
-        toggleTodo: createStandardAction(TodoActionTypes.toggleTodo)<number>(),
+        addTodo: createAction(
+            TodoActionTypes.addTodo,
+            (title: string) => {
+                id++;
+                return { title, id, completed: false};
+            },
+        )(),
+        completeAll: createAction(TodoActionTypes.completeAll)(),
+        toggleTodo: createAction(TodoActionTypes.toggleTodo)<number>(),
     };
+
+    beforeEach(() => {
+        id = 0;
+    });
 
     describe("action", () => {
         it("with type only", () => {

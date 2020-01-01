@@ -3,7 +3,7 @@ import * as React from "react";
 import { connect, Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 import sinon from "sinon";
-import { ActionType, createAction, createStandardAction, getType, StateType } from "typesafe-actions";
+import { ActionType, createAction, getType, StateType } from "typesafe-actions";
 
 describe("react-redux", () => {
     interface ISFCCounter {
@@ -29,7 +29,7 @@ describe("react-redux", () => {
         });
     });
 
-    const increment = createAction("INCREMENT", (resolve) => () => resolve());
+    const increment = createAction("INCREMENT")();
     interface IStatefullCounter {
         count: number;
     }
