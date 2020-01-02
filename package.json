@@ -5,8 +5,10 @@
     "depcheck": "depcheck --ignores=@types/* ./"
   },
   "devDependencies": {
-    "depcheck": "^0.8.3",
-    "typescript": "^3.5.3"
+    "depcheck": "^0.9.1",
+    "sinon": "^8.0.2",
+    "typesafe-actions": "^5.1.0",
+    "typescript": "^3.7.4"
   },
   "name": "ts-exercise",
   "version": "1.0.0",
@@ -17,7 +19,6 @@
   "dependencies": {
     "@types/enzyme": "^3.10.3",
     "@types/jest": "^24.0.17",
-    "@types/node": "^12.7.2",
     "@types/react": "^16.9.1",
     "@types/react-redux": "^7.1.1",
     "@types/redux": "^3.6.0",
@@ -29,9 +30,7 @@
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
-    "sinon": "^7.4.1",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.18.0",
-    "typesafe-actions": "^4.4.2"
+    "tslint": "^5.18.0"
   }
 }
