@@ -2,12 +2,11 @@ language: node_js
 node_js:
   - stable
 cache:
-  yarn: true
+  yarn: false
   directories:
     - node_modules
 install:
-    - make
-    - make node_modules/upgrade
+    - npm install
 script:
-  - yarn test
-  - yarn lint
+  - npm run test
+  - npm run lint

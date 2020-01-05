@@ -1,36 +1,49 @@
 describe("test/type-compatibility", () => {
-    describe("comparing 2 functions", () => {
-        it("checks first part of argument", () => {
-            const forEach1 = (item: number) => item * 2;
-            const forEach2 = (item: number, index: number) => item * index;
-            const forEach3 = (item: number, index: number, array: number[]) => item * index + array.length;
+  describe("comparing 2 functions", () => {
+    it("checks first part of argument", () => {
+      const forEach1 = (item: number) => item * 2;
+      const forEach2 = (item: number, index: number) => item * index;
+      const forEach3 = (item: number, index: number, array: number[]) =>
+        item * index + array.length;
 
-            expect([1, 2, 3].map(forEach1)).toStrictEqual([2, 4, 6]);
-            expect([1, 2, 3].map(forEach2)).toStrictEqual([0, 2, 6]);
-            expect([1, 2, 3].map(forEach3)).toStrictEqual([3, 5, 9]);
-        });
-        it("allows optional parameters", () => {
-            function invokeLater(args: any[], callback: (...args: any[]) => any) {
-                return callback(...args);
-            }
-
-            const res = invokeLater([1, 2], (x, y) => (x + ", " + y));
-            expect(res).toStrictEqual("1, 2");
-        });
+      expect([1, 2, 3].map(forEach1)).toStrictEqual([2, 4, 6]);
+      expect([1, 2, 3].map(forEach2)).toStrictEqual([0, 2, 6]);
+      expect([1, 2, 3].map(forEach3)).toStrictEqual([3, 5, 9]);
     });
-    describe("Enum", () => {
-        it("is compatible with numbers", () => {
-            enum Status { Ready, Waiting }
-            let status = Status.Ready;
-            status = 2;
-            expect(status).toBe(2);
-        });
-        it("is not compatible with other Enum", () => {
-            enum Status { Ready, Waiting }
-            enum Color { Red, Blue, Green }
+    it("allows optional parameters", () => {
+      function invokeLater(args: any[], callback: (...args: any[]) => any) {
+        return callback(...args);
+      }
 
-            const status = Status.Ready;
-            // status = Color.Green;  // Error
-        });
+      const res = invokeLater([1, 2], (x, y) => x + ", " + y);
+      expect(res).toStrictEqual("1, 2");
     });
+  });
+  describe("Enum", () => {
+    it("is compatible with numbers", () => {
+      enum Status {
+        Ready,
+        Waiting
+      }
+      let status = Status.Ready;
+      status = 2;
+      expect(status).toBe(2);
+    });
+    it("is not compatible with other Enum", () => {
+      enum Status {
+        Ready,
+        Waiting
+      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      enum Color {
+        Red,
+        Blue,
+        Green
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const status = Status.Ready;
+      // status = Color.Green;  // Error
+    });
+  });
 });

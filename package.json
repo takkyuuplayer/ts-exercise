@@ -5,7 +5,13 @@
     "depcheck": "depcheck --ignores=@types/* ./"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
     "depcheck": "^0.9.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "prettier": "1.19.1",
     "sinon": "^8.0.2",
     "typesafe-actions": "^5.1.0",
     "typescript": "^3.7.4"

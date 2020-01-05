@@ -4,16 +4,10 @@ TEST_WATCH_COUNT=1
 
 all: node_modules
 
-node_modules:
-	yarn install
-
-node_modules/upgrade:
-	yarn upgrade --latest
-
 test:
-	yarn run test
-	yarn run lint
-	yarn run depcheck
+	npm run test
+	npm run lint
+	npm run depcheck
 
 test-watch:
 	$(shell npm bin)/nodemon -w src/ -w test/ -e ts -x "make -i test-mru"
