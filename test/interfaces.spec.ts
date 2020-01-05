@@ -1,5 +1,4 @@
 /* tslint:disable max-classes-per-file */
-import { createInterface } from "readline";
 
 describe("test/interfaces", () => {
   it("can have required parameters", () => {
@@ -100,10 +99,10 @@ describe("test/interfaces", () => {
     describe("number index", () => {
       it("should return a subtype of returned type of string index", () => {
         class Animal {
-          public name: string = "";
+          public name = "";
         }
         class Dog extends Animal {
-          public breed: string = "";
+          public breed = "";
         }
         interface IOkay {
           [x: number]: Dog;
@@ -113,7 +112,7 @@ describe("test/interfaces", () => {
           0: new Dog(),
           1: new Animal(),
           bar: new Animal(),
-          foo: new Dog(),
+          foo: new Dog()
         };
         expect(obj[0]).toBeInstanceOf(Dog);
         expect(obj[1]).toBeInstanceOf(Animal);
@@ -145,7 +144,7 @@ describe("test/interfaces", () => {
             now.getMonth(),
             now.getDate(),
             h,
-            m,
+            m
           );
         }
         public setTime(d: Date) {
@@ -173,7 +172,7 @@ describe("test/interfaces", () => {
             now.getMonth(),
             now.getDate(),
             h,
-            m,
+            m
           );
         }
         public tick() {
@@ -190,7 +189,7 @@ describe("test/interfaces", () => {
             now.getMonth(),
             now.getDate(),
             h,
-            m,
+            m
           );
         }
         public tick() {
@@ -200,7 +199,7 @@ describe("test/interfaces", () => {
       function createClock(
         ctor: IClockConstructor,
         hour: number,
-        minute: number,
+        minute: number
       ): IClock {
         return new ctor(hour, minute);
       }
@@ -232,7 +231,7 @@ describe("test/interfaces", () => {
       expect(square).toStrictEqual({
         color: "blue",
         penWidth: 5.0,
-        sideLength: 10,
+        sideLength: 10
       });
     });
   });

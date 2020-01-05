@@ -5,7 +5,7 @@ describe("Iterables", () => {
         for (let index = 0; index < 5; index++) {
           yield index * index;
         }
-      },
+      }
     };
     const iterated = [];
     for (const val of iterable) {
@@ -28,6 +28,7 @@ describe("Iterables", () => {
       const arr = [1, 4, 9];
       let sum = "";
       for (const key in arr) {
+        // eslint-disable-next-line no-prototype-builtins
         if (arr.hasOwnProperty(key)) {
           sum += key;
         }

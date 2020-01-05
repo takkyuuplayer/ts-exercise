@@ -35,9 +35,6 @@ describe("test/generics", () => {
     });
   });
   describe("generic constraints", () => {
-    function identity<T>(arg: T): T {
-      return arg;
-    }
     it("restricts structure of generic type", () => {
       interface ILengthwise {
         length: number;
@@ -49,7 +46,7 @@ describe("test/generics", () => {
       expect(loggingIdentity([1, 2, 3])).toStrictEqual([1, 2, 3]);
       expect(loggingIdentity({ a: 1, length: 3 })).toStrictEqual({
         a: 1,
-        length: 3,
+        length: 3
       });
     });
   });
