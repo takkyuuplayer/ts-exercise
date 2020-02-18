@@ -3,13 +3,16 @@ import tmp from "tmp";
 import Benchmark from "benchmark";
 
 const winstonLogger = winston.createLogger({
-  transports: [new winston.transports.File({ filename: tmp.fileSync().name })]
+  transports: [new winston.transports.Console()]
 });
 
 const suite = new Benchmark.Suite();
 suite
   .add("winston.info", function() {
     winstonLogger.info("Hello World");
+  })
+  .add("console.info", function() {
+    console.info("Hello World");
   })
   .on("cycle", function(event: any) {
     console.log(String(event.target));
