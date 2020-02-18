@@ -24,6 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/benchmark": "^1.0.31",
+    "@types/bunyan": "^1.8.6",
     "@types/enzyme": "^3.10.3",
     "@types/jest": "^24.0.17",
     "@types/react": "^16.9.1",
@@ -33,6 +34,7 @@
     "@types/tmp": "^0.1.0",
     "@types/winston": "^2.4.4",
     "benchmark": "^2.1.4",
+    "bunyan": "^1.8.12",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.8.0",
