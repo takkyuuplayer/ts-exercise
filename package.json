@@ -30,6 +30,8 @@
     "@types/react-redux": "^7.1.1",
     "@types/redux": "^3.6.0",
     "@types/sinon": "^7.0.13",
+    "@types/tmp": "^0.1.0",
+    "@types/winston": "^2.4.4",
     "benchmark": "^2.1.4",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -38,7 +40,10 @@
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
+    "tmp": "^0.1.0",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.18.0"
+    "ts-node": "^8.6.2",
+    "tslint": "^5.18.0",
+    "winston": "^3.2.1"
   }
 }
