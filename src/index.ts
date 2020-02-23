@@ -11,6 +11,10 @@ createConnection({
 })
   .then(async connection => {
     let photoRepository = connection.getRepository(Photo);
+
+    let photoToRemove = await photoRepository.findOne(1);
+    await photoRepository.remove(photoToRemove!);
+
     let [allPhotos, photosCount] = await photoRepository.findAndCount({
       isPublished: true
     });
