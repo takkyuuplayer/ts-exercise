@@ -11,36 +11,38 @@ createConnection({
   logging: true
 })
   .then(async connection => {
-    // create a photo
+    // create photo object
     let photo = new Photo();
     photo.name = "Me and Bears";
     photo.description = "I am near polar bears";
-    photo.filename = "photo-with-bears.jpg";
     photo.views = 1;
+    photo.filename = "photo-with-bears.jpg";
     photo.isPublished = true;
 
-    // create a photo metadata
+    // create photo metadata object
     let metadata = new PhotoMetadata();
     metadata.height = 640;
     metadata.width = 480;
     metadata.compressed = true;
     metadata.comment = "cybershoot";
     metadata.orientation = "portait";
-    metadata.photo = photo; // this way we connect them
 
-    // get entity repositories
+    photo.metadata = metadata; // this way we connect them
+
+    // get repository
     let photoRepository = connection.getRepository(Photo);
-    let metadataRepository = connection.getRepository(PhotoMetadata);
 
-    // first we should save a photo
+    // saving a photo also save the metadata
     await photoRepository.save(photo);
 
-    // photo is saved. Now we need to save a photo metadata
-    await metadataRepository.save(metadata);
+    console.log("Photo is saved, photo metadata is saved too.");
 
-    // done
-    console.log(
-      "Metadata is saved, and relation between metadata and photo is created in the database too"
-    );
+    let photos = await connection
+      .getRepository(Photo)
+      .createQueryBuilder("photo")
+      .innerJoinAndSelect("photo.metadata", "metadata")
+      .getMany();
+
+    console.log(photos);
   })
   .catch(error => console.log(error));
