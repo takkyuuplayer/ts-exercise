@@ -1,9 +1,10 @@
 {
    "scripts": {
-      "test": "jest",
-      "lint": "tslint -p tsconfig.json",
       "depcheck": "depcheck --ignores=@types/* ./",
-      "start": "ts-node src/index.ts"
+      "lint": "eslint --fix {src,test}/**/*.ts",
+      "start": "ts-node src/index.ts",
+      "test": "npm run test:lint && jest",
+      "test:lint": "eslint {src,test}/**/*.ts"
    },
    "dependencies": {
       "sqlite3": "^4.1.1"
