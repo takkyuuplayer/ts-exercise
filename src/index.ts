@@ -11,25 +11,10 @@ createConnection({
   logging: true
 })
   .then(async connection => {
-    // create photo object
-    let photo = new Photo();
-    photo.name = "Me and Bears";
-    photo.description = "I am near polar bears";
-    photo.views = 1;
-    photo.filename = "photo-with-bears.jpg";
-    photo.isPublished = true;
-
-    // create photo metadata object
-    let metadata = new PhotoMetadata();
-    metadata.height = 640;
-    metadata.width = 480;
-    metadata.compressed = true;
-    metadata.comment = "cybershoot";
-    metadata.orientation = "portait";
-
+    let photo = Photo.fake({ name: "Test" });
+    let metadata = PhotoMetadata.fake();
     photo.metadata = metadata; // this way we connect them
 
-    // get repository
     let photoRepository = connection.getRepository(Photo);
 
     // saving a photo also save the metadata

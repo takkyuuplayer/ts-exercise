@@ -1,27 +1,42 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
 import { PhotoMetadata } from "./PhotoMetadata";
+import faker from "faker";
 
 @Entity()
 export class Photo {
+  public static fake(entity?: Photo) {
+    const photo = new Photo();
+
+    photo.id = entity?.id || undefined;
+    photo.name = entity?.name || faker.name.findName();
+    photo.description = entity?.description || faker.lorem.paragraph();
+    photo.filename = entity?.filename || faker.system.fileName();
+    photo.isPublished = entity?.isPublished || faker.random.boolean();
+    photo.metadata = entity?.metadata || undefined;
+    photo.views = entity?.views || faker.random.number({ min: 1 });
+
+    return photo;
+  }
+
   @PrimaryGeneratedColumn()
-  id!: number;
+  id?: number;
 
   @Column({
     length: 100
   })
-  name!: string;
+  name?: string;
 
   @Column("text")
-  description!: string;
+  description?: string;
 
   @Column()
-  filename!: string;
+  filename?: string;
 
   @Column("double")
-  views!: number;
+  views?: number;
 
   @Column()
-  isPublished!: boolean;
+  isPublished?: boolean;
 
   @OneToOne(
     () => PhotoMetadata,
@@ -30,5 +45,5 @@ export class Photo {
       cascade: true
     }
   )
-  metadata!: PhotoMetadata;
+  metadata?: PhotoMetadata;
 }
