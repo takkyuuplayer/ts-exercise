@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "reflect-metadata";
 /* eslint-disable no-unused-vars */
 describe("decorator", () => {

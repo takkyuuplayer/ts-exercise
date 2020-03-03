@@ -1,5 +1,6 @@
 # ts-exercise
 
-[![Build Status](https://travis-ci.org/takkyuuplayer/ts-exercise.svg?branch=master)](https://travis-ci.org/takkyuuplayer/ts-exercise)
+![](https://github.com/takkyuuplayer/ts-exercise/workflows/CI/badge.svg)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 TypeScript Exercise
