@@ -6,13 +6,13 @@ import sinon from "sinon";
 import { ActionType, createAction, getType, StateType } from "typesafe-actions";
 
 describe("react-redux", () => {
-  interface ISFCCounter {
+  interface IFCCounter {
     count: number;
     onIncrement: () => any;
   }
-  const Counter: React.SFC<ISFCCounter> = ({
+  const Counter: React.FC<IFCCounter> = ({
     count,
-    onIncrement
+    onIncrement,
   }: {
     count: number;
     onIncrement: () => {};
@@ -29,18 +29,10 @@ describe("react-redux", () => {
     const callback = sinon.spy();
     const wrapper = shallow(<Counter count={0} onIncrement={callback} />);
     it("has count", () => {
-      expect(
-        wrapper
-          .find("span")
-          .at(0)
-          .text()
-      ).toBe("0");
+      expect(wrapper.find("span").at(0).text()).toBe("0");
     });
     it("has increment button", () => {
-      wrapper
-        .find("button")
-        .at(0)
-        .simulate("click");
+      wrapper.find("button").at(0).simulate("click");
       expect(callback.callCount).toBe(1);
     });
   });
@@ -58,7 +50,7 @@ describe("react-redux", () => {
         default:
           return state;
       }
-    }
+    },
   });
   class StatefullCounter extends React.Component<any, IStatefullCounter> {
     public readonly state: IStatefullCounter = reducer(undefined, {} as any);
@@ -79,26 +71,13 @@ describe("react-redux", () => {
   describe("Statefull Component", () => {
     const wrapper = shallow(<StatefullCounter />);
     it("has initial state", () => {
-      expect(
-        wrapper
-          .find("span")
-          .at(0)
-          .text()
-      ).toBe("0");
+      expect(wrapper.find("span").at(0).text()).toBe("0");
     });
 
     it("has has increment button", () => {
-      wrapper
-        .find("button")
-        .at(0)
-        .simulate("click");
+      wrapper.find("button").at(0).simulate("click");
 
-      expect(
-        wrapper
-          .find("span")
-          .at(0)
-          .text()
-      ).toBe("1");
+      expect(wrapper.find("span").at(0).text()).toBe("1");
     });
   });
   describe("Redux connected Component", () => {
@@ -106,10 +85,10 @@ describe("react-redux", () => {
     type RootAction = counterActions; // Should be union
 
     const mapStateToProps = (state: RootState) => ({
-      count: state.count
+      count: state.count,
     });
     const mapDispatchToProps = (dispatch: (action: RootAction) => any) => ({
-      onIncrement: () => dispatch(increment())
+      onIncrement: () => dispatch(increment()),
     });
     const Connected = connect(mapStateToProps, mapDispatchToProps)(Counter);
 
@@ -121,26 +100,13 @@ describe("react-redux", () => {
       </Provider>
     );
     it("has initial state", () => {
-      expect(
-        wrapper
-          .find("span")
-          .at(0)
-          .text()
-      ).toBe("0");
+      expect(wrapper.find("span").at(0).text()).toBe("0");
     });
 
     it("has has increment button", () => {
-      wrapper
-        .find("button")
-        .at(0)
-        .simulate("click");
+      wrapper.find("button").at(0).simulate("click");
 
-      expect(
-        wrapper
-          .find("span")
-          .at(0)
-          .text()
-      ).toBe("1");
+      expect(wrapper.find("span").at(0).text()).toBe("1");
     });
   });
 });
