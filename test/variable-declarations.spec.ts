@@ -31,7 +31,7 @@ describe("test/variable-declarations", () => {
       expect(search).toStrictEqual({
         food: "rich",
         price: "$$",
-        ambiance: "noisy"
+        ambiance: "noisy",
       });
     });
   });

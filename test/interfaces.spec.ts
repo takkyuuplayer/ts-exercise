@@ -80,8 +80,7 @@ describe("test/interfaces", () => {
   describe("Function Types", () => {
     it("forces function's signature", () => {
       type ISearch = (source: string, subString: string) => boolean;
-      let mySearch: ISearch;
-      mySearch = (source: string, subString: string) => {
+      const mySearch: ISearch = (source: string, subString: string) => {
         return source.search(subString) > -1;
       };
       expect(mySearch("This is foo bar", "foo")).toBeTruthy();
@@ -92,8 +91,7 @@ describe("test/interfaces", () => {
       interface IStringArray {
         [index: number]: string;
       }
-      let myArray: IStringArray;
-      myArray = ["Bob", "Fred"];
+      const myArray: IStringArray = ["Bob", "Fred"];
       expect(myArray).toStrictEqual(["Bob", "Fred"]);
     });
     describe("number index", () => {
@@ -104,15 +102,11 @@ describe("test/interfaces", () => {
         class Dog extends Animal {
           public breed = "";
         }
-        interface IOkay {
-          [x: number]: Dog;
-          [x: string]: Animal;
-        }
         const obj = {
           0: new Dog(),
           1: new Animal(),
           bar: new Animal(),
-          foo: new Dog()
+          foo: new Dog(),
         };
         expect(obj[0]).toBeInstanceOf(Dog);
         expect(obj[1]).toBeInstanceOf(Animal);
@@ -231,7 +225,7 @@ describe("test/interfaces", () => {
       expect(square).toStrictEqual({
         color: "blue",
         penWidth: 5.0,
-        sideLength: 10
+        sideLength: 10,
       });
     });
   });

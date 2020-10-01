@@ -43,7 +43,7 @@ describe("test/functions", () => {
   describe("arrow function", () => {
     class Sample {
       public func() {
-        return function(this: any): any {
+        return function (this: any): any {
           return this;
         };
       }
@@ -82,7 +82,7 @@ describe("test/functions", () => {
       const myDeck = [
         { suit: "diamonds", card: 2 },
         { suit: "spades", card: 10 },
-        { suit: "hearts", card: 4 }
+        { suit: "hearts", card: 4 },
       ];
 
       expect(pickCard(myDeck)).toBeLessThan(myDeck.length);

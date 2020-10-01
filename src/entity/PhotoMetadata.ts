@@ -3,7 +3,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
   OneToOne,
-  JoinColumn
+  JoinColumn,
 } from "typeorm";
 import { Photo } from "./Photo";
 import faker from "faker";
@@ -45,10 +45,7 @@ export class PhotoMetadata {
   @Column()
   comment?: string;
 
-  @OneToOne(
-    () => Photo,
-    (photo: Photo) => photo.metadata
-  )
+  @OneToOne(() => Photo, (photo: Photo) => photo.metadata)
   @JoinColumn()
   photo?: Photo;
 }

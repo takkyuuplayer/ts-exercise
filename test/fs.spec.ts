@@ -5,7 +5,7 @@ describe("fs", () => {
   describe("readFileSync", () => {
     it("returns string if encoding is passed", () => {
       const read = fs.readFileSync(path.resolve("./test/data/hello.txt"), {
-        encoding: "utf8"
+        encoding: "utf8",
       });
 
       expect(typeof read).toBe("string");

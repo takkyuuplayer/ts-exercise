@@ -1,12 +1,12 @@
 // https://github.com/piotrwitek/react-redux-typescript-guide#redux
 import { combineReducers, createStore } from "redux";
-import { ActionType, createAction, getType, StateType } from "typesafe-actions";
+import { ActionType, createAction, getType } from "typesafe-actions";
 
 describe("typesafe-actions", () => {
   enum TodoActionTypes {
     completeAll = "COMPLETE_ALL",
     toggleTodo = "TOGGLE_TODO",
-    addTodo = "ADD_TODO"
+    addTodo = "ADD_TODO",
   }
   let id = 0;
   const actions = {
@@ -15,7 +15,7 @@ describe("typesafe-actions", () => {
       return { title, id, completed: false };
     })(),
     completeAll: createAction(TodoActionTypes.completeAll)(),
-    toggleTodo: createAction(TodoActionTypes.toggleTodo)<number>()
+    toggleTodo: createAction(TodoActionTypes.toggleTodo)<number>(),
   };
 
   beforeEach(() => {
@@ -25,13 +25,13 @@ describe("typesafe-actions", () => {
   describe("action", () => {
     it("with type only", () => {
       expect(actions.completeAll()).toEqual({
-        type: TodoActionTypes.completeAll
+        type: TodoActionTypes.completeAll,
       });
     });
     it("with payload without logic", () => {
       expect(actions.toggleTodo(1)).toEqual({
         payload: 1,
-        type: TodoActionTypes.toggleTodo
+        type: TodoActionTypes.toggleTodo,
       });
     });
     it("with payload and logic", () => {
@@ -39,9 +39,9 @@ describe("typesafe-actions", () => {
         payload: {
           completed: false,
           id: 1,
-          title: "Learn TypeScript"
+          title: "Learn TypeScript",
         },
-        type: TodoActionTypes.addTodo
+        type: TodoActionTypes.addTodo,
       });
     });
   });
@@ -62,7 +62,7 @@ describe("typesafe-actions", () => {
       case getType(actions.completeAll):
         return state.map((todo: ITodo) => ({ ...todo, completed: true }));
       case getType(actions.toggleTodo):
-        return state.map(todo =>
+        return state.map((todo) =>
           todo.id === action.payload
             ? { ...todo, completed: !todo.completed }
             : todo
@@ -72,7 +72,7 @@ describe("typesafe-actions", () => {
     }
   };
   const reducer = combineReducers<ITodosState, TodosAction>({
-    todos
+    todos,
   });
   describe("reducer", () => {
     it("returns initial state", () => {
@@ -85,25 +85,25 @@ describe("typesafe-actions", () => {
     });
     it("handles toggleTodo", () => {
       const before = {
-        todos: [{ title: "Learn TypeScript", id: 1, completed: false }]
+        todos: [{ title: "Learn TypeScript", id: 1, completed: false }],
       };
       expect(reducer(before, actions.toggleTodo(1)).todos).toStrictEqual([
-        { title: "Learn TypeScript", id: 1, completed: true }
+        { title: "Learn TypeScript", id: 1, completed: true },
       ]);
       expect(reducer(before, actions.toggleTodo(2)).todos).toStrictEqual([
-        { title: "Learn TypeScript", id: 1, completed: false }
+        { title: "Learn TypeScript", id: 1, completed: false },
       ]);
     });
     it("handles completeAll", () => {
       const before = {
         todos: [
           { title: "Learn TypeScript", id: 1, completed: false },
-          { title: "Learn redux", id: 2, completed: false }
-        ]
+          { title: "Learn redux", id: 2, completed: false },
+        ],
       };
       const expected = [
         { title: "Learn TypeScript", id: 1, completed: true },
-        { title: "Learn redux", id: 2, completed: true }
+        { title: "Learn redux", id: 2, completed: true },
       ];
       expect(reducer(before, actions.completeAll()).todos).toStrictEqual(
         expected
@@ -112,8 +112,6 @@ describe("typesafe-actions", () => {
   });
 
   describe("store", () => {
-    type RootState = StateType<typeof reducer>;
-    type RootAction = TodosAction;
     const store = createStore(reducer);
 
     it("returns initial state", () => {
@@ -123,7 +121,7 @@ describe("typesafe-actions", () => {
     it("can dispatch action", () => {
       store.dispatch(actions.addTodo("Learn TypeScript"));
       expect(store.getState()).toStrictEqual({
-        todos: [{ title: "Learn TypeScript", id: 1, completed: false }]
+        todos: [{ title: "Learn TypeScript", id: 1, completed: false }],
       });
     });
   });

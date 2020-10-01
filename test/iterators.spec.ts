@@ -5,7 +5,7 @@ describe("Iterables", () => {
         for (let index = 0; index < 5; index++) {
           yield index * index;
         }
-      }
+      },
     };
     const iterated = [];
     for (const val of iterable) {

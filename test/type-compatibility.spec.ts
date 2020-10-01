@@ -23,7 +23,7 @@ describe("test/type-compatibility", () => {
     it("is compatible with numbers", () => {
       enum Status {
         Ready,
-        Waiting
+        Waiting,
       }
       let status = Status.Ready;
       status = 2;
@@ -32,13 +32,13 @@ describe("test/type-compatibility", () => {
     it("is not compatible with other Enum", () => {
       enum Status {
         Ready,
-        Waiting
+        Waiting,
       }
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       enum Color {
         Red,
         Blue,
-        Green
+        Green,
       }
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

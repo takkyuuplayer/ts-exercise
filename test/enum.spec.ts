@@ -2,7 +2,7 @@ describe("test/enums", () => {
   it("is definable by function", () => {
     enum TIMES {
       NOW = new Date().getTime(),
-      ORIGIN = 0
+      ORIGIN = 0,
     }
     expect(TIMES.NOW).toBeLessThanOrEqual(new Date().getTime());
     expect(TIMES.ORIGIN).toBe(0);
@@ -10,7 +10,7 @@ describe("test/enums", () => {
   describe("enum as type", () => {
     enum ShapeKind {
       Circle,
-      Square
+      Square,
     }
     it("can define type", () => {
       interface ICircle {
@@ -18,14 +18,9 @@ describe("test/enums", () => {
         radius: number;
       }
 
-      interface ISquare {
-        kind: ShapeKind.Square;
-        sideLength: number;
-      }
-
       const c: ICircle = {
         kind: ShapeKind.Circle,
-        radius: 100
+        radius: 100,
       };
 
       expect(c.kind).toBe(ShapeKind.Circle);
@@ -47,7 +42,7 @@ describe("test/enums", () => {
       enum E {
         X,
         Y,
-        Z
+        Z,
       }
       function f(obj: { X: number }) {
         return obj.X;
