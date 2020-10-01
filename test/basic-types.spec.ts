@@ -20,9 +20,7 @@ describe("test/basic-types", () => {
   });
   describe("Tuple", () => {
     it("can define an array where the type of a fixed number of elements is known", () => {
-      let x: [string, number];
-
-      x = ["hello", 10];
+      const x: [string, number] = ["hello", 10];
 
       expect(x).toEqual(["hello", 10]);
     });
@@ -32,7 +30,7 @@ describe("test/basic-types", () => {
       enum Color {
         Red,
         Green,
-        Blue
+        Blue,
       }
       expect(Color).toEqual({
         Red: 0,
@@ -40,14 +38,14 @@ describe("test/basic-types", () => {
         Blue: 2,
         0: "Red",
         1: "Green",
-        2: "Blue"
+        2: "Blue",
       });
     });
     it("can set inital value", () => {
       enum Color {
         Red = 1,
         Green,
-        Blue
+        Blue,
       }
       expect(Color).toEqual({
         Red: 1,
@@ -55,14 +53,14 @@ describe("test/basic-types", () => {
         Blue: 3,
         1: "Red",
         2: "Green",
-        3: "Blue"
+        3: "Blue",
       });
     });
     it("can set all values", () => {
       enum Color {
         Red = 1,
         Green = 2,
-        Blue = 4
+        Blue = 4,
       }
       expect(Color).toEqual({
         Red: 1,
@@ -70,14 +68,14 @@ describe("test/basic-types", () => {
         Blue: 4,
         1: "Red",
         2: "Green",
-        4: "Blue"
+        4: "Blue",
       });
     });
     it("can set partial values", () => {
       enum Color {
         Red = 1,
         Green,
-        Blue = 5
+        Blue = 5,
       }
       expect(Color).toEqual({
         Red: 1,
@@ -85,7 +83,7 @@ describe("test/basic-types", () => {
         Blue: 5,
         1: "Red",
         2: "Green",
-        5: "Blue"
+        5: "Blue",
       });
     });
   });

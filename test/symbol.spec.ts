@@ -5,7 +5,7 @@ describe("symbol", () => {
   it("can be used as keys for object properties", () => {
     const sym = Symbol();
     const obj = {
-      [sym]: "value"
+      [sym]: "value",
     };
     expect(obj[sym]).toBe("value");
   });

@@ -22,7 +22,7 @@ export class Photo {
   id?: number;
 
   @Column({
-    length: 100
+    length: 100,
   })
   name?: string;
 
@@ -42,7 +42,7 @@ export class Photo {
     () => PhotoMetadata,
     (photoMetadata: PhotoMetadata) => photoMetadata.photo,
     {
-      cascade: true
+      cascade: true,
     }
   )
   metadata?: PhotoMetadata;

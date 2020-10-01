@@ -7,13 +7,13 @@ describe("decorator", () => {
       let counter = 0;
       function f() {
         expect(++counter).toBe(1);
-        return function(constructor: Function) {
+        return function (constructor: Function) {
           expect(++counter).toBe(4);
         };
       }
       function g() {
         expect(++counter).toBe(2);
-        return function(constructor: Function) {
+        return function (constructor: Function) {
           expect(++counter).toBe(3);
         };
       }
@@ -147,7 +147,7 @@ describe("decorator", () => {
             this.greeting = message;
           }
           greet() {
-            let formatString = getFormat(this, "greeting");
+            const formatString = getFormat(this, "greeting");
             return formatString.replace("%s", this.greeting);
           }
         }

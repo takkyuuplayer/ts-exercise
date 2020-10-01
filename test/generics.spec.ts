@@ -46,7 +46,7 @@ describe("test/generics", () => {
       expect(loggingIdentity([1, 2, 3])).toStrictEqual([1, 2, 3]);
       expect(loggingIdentity({ a: 1, length: 3 })).toStrictEqual({
         a: 1,
-        length: 3
+        length: 3,
       });
     });
   });
