@@ -1,5 +1,5 @@
 module.exports = {
-    testEnvironment: 'jsdom',
+    testEnvironment: 'node',
     transform: {
         '^.+\\.tsx?$': 'ts-jest'
     },
@@ -16,8 +16,5 @@ module.exports = {
     collectCoverageFrom: [
         'src/**/*.{ts,tsx,js,jsx}',
         '!src/**/*.d.ts',
-    ],
-    setupFilesAfterEnv: [
-      "./jest.enzyme.js"
     ]
 };

@@ -1,6 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { faker } from "@faker-js/faker";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { PhotoMetadata } from "./PhotoMetadata";
-import faker from "faker";
 
 @Entity()
 export class Photo {
@@ -8,12 +8,12 @@ export class Photo {
     const photo = new Photo();
 
     photo.id = entity?.id || undefined;
-    photo.name = entity?.name || faker.name.findName();
+    photo.name = entity?.name || faker.name.firstName();
     photo.description = entity?.description || faker.lorem.paragraph();
     photo.filename = entity?.filename || faker.system.fileName();
-    photo.isPublished = entity?.isPublished || faker.random.boolean();
+    photo.isPublished = entity?.isPublished || faker.datatype.boolean();
     photo.metadata = entity?.metadata || undefined;
-    photo.views = entity?.views || faker.random.number({ min: 1 });
+    photo.views = entity?.views || faker.datatype.number({ min: 1 });
 
     return photo;
   }

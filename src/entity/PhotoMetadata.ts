@@ -1,12 +1,12 @@
+import { faker } from "@faker-js/faker";
 import {
-  Entity,
   Column,
-  PrimaryGeneratedColumn,
-  OneToOne,
+  Entity,
   JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Photo } from "./Photo";
-import faker from "faker";
 
 @Entity()
 export class PhotoMetadata {
@@ -15,15 +15,15 @@ export class PhotoMetadata {
 
     photoMetadata.id = entity?.id || undefined;
     photoMetadata.comment = entity?.comment || faker.lorem.paragraphs();
-    photoMetadata.compressed = entity?.compressed || faker.random.boolean();
+    photoMetadata.compressed = entity?.compressed || faker.datatype.boolean();
     photoMetadata.height =
-      entity?.height || faker.random.number({ min: 480, max: 1024 });
+      entity?.height || faker.datatype.number({ min: 480, max: 1024 });
     photoMetadata.orientation =
       entity?.orientation ||
-      faker.random.arrayElement(["PORTRATE", "SELFEE", "LANDSCAPE"]);
+      faker.helpers.arrayElement(["PORTRATE", "SELFEE", "LANDSCAPE"]);
     photoMetadata.photo = entity?.photo || undefined;
     photoMetadata.width =
-      entity?.width || faker.random.number({ min: 480, max: 1024 });
+      entity?.width || faker.datatype.number({ min: 480, max: 1024 });
 
     return photoMetadata;
   }
