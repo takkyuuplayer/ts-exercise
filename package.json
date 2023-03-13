@@ -1,8 +1,9 @@
 {
   "scripts": {
     "depcheck": "depcheck --ignores=@types/* ./",
-    "lint": "eslint --fix {src,test}/**/*.ts && prettier --write",
+    "lint": "eslint --fix {src,test}/**/*.ts",
     "start": "ts-node src/index.ts",
+    "fmt": "prettier --write {src,test}/**/*.ts",
     "test": "npm run test:lint && jest",
     "test:lint": "eslint {src,test}/**/*.ts"
   },

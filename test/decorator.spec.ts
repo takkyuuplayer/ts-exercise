@@ -133,7 +133,7 @@ describe("decorator", () => {
         }
         class Greeter {
           @f
-          greeting: string = "Hello, ";
+          greeting = "Hello, ";
         }
       });
       it("records metadata about the property", () => {
@@ -171,7 +171,7 @@ describe("decorator", () => {
         }
         class Greeter {
           @f
-          static greeting: string = "Hello, ";
+          static greeting = "Hello, ";
         }
       });
     });
