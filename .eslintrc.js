@@ -1,35 +1,20 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es2021: true,
+    node: true,
   },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
-  globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-  },
+  overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2018,
+    ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "prettier"],
-  rules: {
-    "prettier/prettier": "error",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-  },
-  settings: {
-    react: {
-      version: "detect",
-    },
-  },
+  plugins: ["react", "@typescript-eslint"],
+  rules: {},
 };
