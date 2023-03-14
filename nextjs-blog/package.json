@@ -10,5 +10,11 @@
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "eslintConfig": {
+    "extends": "next",
+    "rules": {
+      "react/react-in-jsx-scope": "off"
+    }
   }
 }
