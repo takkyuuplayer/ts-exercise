@@ -1,0 +1,37 @@
+name: Update Dependencies
+on:
+  push:
+  schedule:
+    - cron: "0 0 1 * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+      - name: update package.json dependencies
+        run: |
+          npx npm-check-updates -u
+          npm install
+      - uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          commit-message: "Update dependencies"
+          title: "Update dependencies"
+          branch: "update-dependencies"
+          delete-branch: true
+          reviewers: takkyuuplayer
+          body: |
+            Run
+
+            ```
+            $ git fetch --all
+            $ git checkout update-dependencies
+            $ git reset --hard origin/update-dependencies
+            $ git commit --allow-empty -m "run ci"
+            $ git push
+            ```
