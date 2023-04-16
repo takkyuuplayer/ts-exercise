@@ -1,5 +1,6 @@
 name: Update Dependencies
 on:
+  push:
   schedule:
     - cron: "0 0 1 * *"
 
@@ -16,9 +17,18 @@ jobs:
         run: |
           npx npm-check-updates -u
           npm install
+
+      - name: Check for PAT
+        id: check_pat
+        run: |
+          if [[ -n "${{ secrets.PAT }}"]]; then
+            echo "::set-output name=token::${{ secrets.PAT }}"
+          else
+            echo "::set-output name=token::${{ secrets.GITHUB_TOKEN }}"
+          fi
       - uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          token: ${{ steps.check_pat.outputs.token }}
           commit-message: "Update dependencies"
           title: "Update dependencies"
           branch: "update-dependencies"
