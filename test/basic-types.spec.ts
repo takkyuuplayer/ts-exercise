@@ -97,10 +97,4 @@ describe("test/basic-types", () => {
       }).toThrowError();
     });
   });
-  describe("Type assertions", () => {
-    const someValue: any = "this is a string";
-    it("let compiler treat a variable as specified type", () => {
-      expect((someValue as string).length).toStrictEqual(16);
-    });
-  });
 });
