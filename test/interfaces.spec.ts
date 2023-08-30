@@ -58,7 +58,7 @@ describe("test/interfaces", () => {
       interface ISquare {
         color?: string;
         width?: number;
-        [propName: string]: any;
+        [propName: string]: number;
       }
       function createSquare(config: ISquare) {
         expect(config).toStrictEqual({ width: 100, opacity: 0.5 });

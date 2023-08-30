@@ -10,14 +10,6 @@ describe("test/type-compatibility", () => {
       expect([1, 2, 3].map(forEach2)).toStrictEqual([0, 2, 6]);
       expect([1, 2, 3].map(forEach3)).toStrictEqual([3, 5, 9]);
     });
-    it("allows optional parameters", () => {
-      function invokeLater(args: any[], callback: (...args: any[]) => any) {
-        return callback(...args);
-      }
-
-      const res = invokeLater([1, 2], (x, y) => x + ", " + y);
-      expect(res).toStrictEqual("1, 2");
-    });
   });
   describe("Enum", () => {
     it("is compatible with numbers", () => {

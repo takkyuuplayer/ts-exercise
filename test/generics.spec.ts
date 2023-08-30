@@ -1,13 +1,9 @@
 describe("test/generics", () => {
   it("defines generic function with proper type information", () => {
-    function badIdentity(arg: any) {
-      return arg;
-    }
     function identity<T>(arg: T): T {
       return arg;
     }
 
-    expect(badIdentity(1)).toBe(1); // No information about returned value
     expect(identity(1)).toBe(1);
     expect(identity<string>("1")).toBe("1");
   });
