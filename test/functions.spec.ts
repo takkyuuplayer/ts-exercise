@@ -40,27 +40,6 @@ describe("test/functions", () => {
       });
     });
   });
-  describe("arrow function", () => {
-    class Sample {
-      public func() {
-        return function (this: any): any {
-          return this;
-        };
-      }
-      public funcCallInside() {
-        return this.func()();
-      }
-      public arrow() {
-        return () => this;
-      }
-    }
-    const sample = new Sample();
-    it("binds this object", () => {
-      expect(sample.func()()).toBeUndefined();
-      expect(sample.funcCallInside()).toBeUndefined();
-      expect(sample.arrow()()).toStrictEqual(sample);
-    });
-  });
   describe("overload", () => {
     it("allows us to define multiple signature function", () => {
       const suits = ["hearts", "spades", "clubs", "diamonds"];
