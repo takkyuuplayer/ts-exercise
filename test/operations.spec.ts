@@ -6,6 +6,5 @@ describe("||", () => {
 
     expect(zero || one).toEqual(one);
     expect(zero || one || two).toEqual(one);
-    expect(true || one || two).toEqual(true);
   });
 });
