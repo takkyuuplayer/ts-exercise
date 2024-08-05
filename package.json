@@ -1,11 +1,11 @@
 {
   "scripts": {
     "depcheck": "depcheck --ignores=@types/* ./",
-    "lint": "eslint --fix {src,test}/**/*.ts",
+    "lint": "eslint --fix",
     "start": "ts-node src/index.ts",
     "fmt": "prettier --write {src,test}/**/*.ts",
     "test": "jest",
-    "test:lint": "eslint {src,test}/**/*.ts",
+    "test:lint": "eslint",
     "postinstall": "prisma migrate dev --name init"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "bunyan": "^1.8.15",
     "depcheck": "^1.4.7",
     "eslint": "^9.8.0",
+    "eslint-plugin-react": "^7.35.0",
     "globals": "^15.9.0",
     "jest": "^29.7.0",
     "prettier": "^3.3.3",

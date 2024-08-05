@@ -1,4 +1,4 @@
-// eslint-disable @typescript-eslint/no-unused-vars
+/* eslint-disable @typescript-eslint/no-unused-vars */
 describe("type inference", () => {
   it("infere type of variable", () => {
     const x = 3;
