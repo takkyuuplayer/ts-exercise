@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { GetStaticPaths, GetStaticProps } from "next";
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
