@@ -1,8 +1,10 @@
 describe("type inference", () => {
   it("infere type of variable", () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const x = 3;
     expect(typeof x).toBe("number");
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const y = "string";
     expect(typeof y).toBe("string");
   });
