@@ -43,7 +43,7 @@ export class Photo {
     (photoMetadata: PhotoMetadata) => photoMetadata.photo,
     {
       cascade: true,
-    }
+    },
   )
   metadata?: PhotoMetadata;
 }
