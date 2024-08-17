@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 describe("test/enums", () => {
   it("is definable by function", () => {
     enum TIMES {

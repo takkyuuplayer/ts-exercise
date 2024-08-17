@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 describe("||", () => {
   it("returns first value that is true", () => {
     const zero = 0;

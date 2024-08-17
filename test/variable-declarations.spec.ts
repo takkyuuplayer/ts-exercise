@@ -1,3 +1,5 @@
+import { describe, expect, it } from "vitest";
+
 describe("test/variable-declarations", () => {
   describe("Array destruction", () => {
     it("assign variables by destruction", () => {
