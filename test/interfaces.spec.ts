@@ -1,4 +1,4 @@
-/* tslint:disable max-classes-per-file */
+import { describe, it, expect } from "vitest";
 
 describe("test/interfaces", () => {
   it("can have required parameters", () => {

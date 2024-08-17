@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 describe("test/generics", () => {
   it("defines generic function with proper type information", () => {
     function identity<T>(arg: T): T {

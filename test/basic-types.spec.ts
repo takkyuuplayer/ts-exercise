@@ -1,4 +1,5 @@
-/* tslint:disable object-literal-sort-keys */
+import { describe, expect, it } from "vitest";
+
 describe("test/basic-types", () => {
   describe("Number", () => {
     it("can define decimal", () => {

@@ -1,3 +1,5 @@
+import { describe, it , expect} from "vitest";
+
 describe("test/functions", () => {
   describe("function type", () => {
     it("can do contextual typing", () => {

@@ -1,4 +1,5 @@
-/* tslint:disable max-classes-per-file */
+import { describe, expect, it } from "vitest";
+
 describe("test/classes", () => {
   describe("subclass", () => {
     it("must call super before accessing instance values", () => {

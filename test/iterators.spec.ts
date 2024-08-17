@@ -1,3 +1,5 @@
+import { describe, it, expect } from "vitest";
+
 describe("Iterables", () => {
   it("iterates whatever implements Symbol.iterator", () => {
     const iterable = {

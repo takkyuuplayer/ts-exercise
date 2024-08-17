@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { describe, expect, it } from "vitest";
 
 describe("@prisma/client", () => {
   it("should work", async () => {
