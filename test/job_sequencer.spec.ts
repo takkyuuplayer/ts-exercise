@@ -51,7 +51,7 @@ class JobSequencer {
 }
 
 describe.concurrent("JobSequencer", () => {
-  test("basic", async () => {
+  test.concurrent("basic", async () => {
     const sequencer = new JobSequencer();
     const processedOrder: Array<number> = [];
     const resolved: Array<number> = [];
@@ -59,7 +59,8 @@ describe.concurrent("JobSequencer", () => {
 
     const s0 = sequencer.generateSequenceNumber();
     sequencer
-      .process(s0, async () => {
+      .process(s0, async (sn) => {
+        expect(sn).toEqual(s0);
         processedOrder.push(s0);
         return s0;
       })
@@ -80,14 +81,6 @@ describe.concurrent("JobSequencer", () => {
       .catch((e) => rejected.push(e));
 
     const s2 = sequencer.generateSequenceNumber();
-    sequencer
-      .process(s2, async () => {
-        processedOrder.push(s2);
-        throw s2;
-      })
-      .then((r) => resolved.push(r))
-      .catch((e) => rejected.push(e));
-
     const s3 = sequencer.generateSequenceNumber();
     sequencer
       .process(s3, async () => {
@@ -100,6 +93,13 @@ describe.concurrent("JobSequencer", () => {
       })
       .then((r) => resolved.push(r))
       .catch((e) => rejected.push(e));
+    sequencer
+      .process(s2, async () => {
+        processedOrder.push(s2);
+        throw s2;
+      })
+      .then((r) => resolved.push(r))
+      .catch((e) => rejected.push(e));
 
     const s4 = sequencer.generateSequenceNumber();
     await sequencer.process(s4, async () => {
@@ -109,10 +109,11 @@ describe.concurrent("JobSequencer", () => {
     expect(processedOrder).toEqual([s0, s1, s2, s3]);
     expect(resolved).toEqual([s0, s1]);
     expect(rejected).toEqual([s2, s3]);
+
     expect(sequencer["pendingJobs"].size).toEqual(0);
   });
 
-  test("sequence number duplication", async () => {
+  test.concurrent("sequence number duplication", async () => {
     const sequencer = new JobSequencer();
     sequencer.process(sequencer.generateSequenceNumber(), async () => {});
 

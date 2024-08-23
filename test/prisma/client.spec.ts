@@ -16,7 +16,6 @@ describe("@prisma/client", () => {
       },
     });
     expect(usersWithPosts).toHaveLength(0);
-    console.dir(usersWithPosts, { depth: null });
     await prisma.$disconnect();
   });
 });
