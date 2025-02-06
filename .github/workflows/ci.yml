@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker compose up --pull always
+      - run: docker compose up --pull always -d
       - uses: actions/setup-node@v4
         with:
           node-version: 22
