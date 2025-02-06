@@ -1,0 +1,6 @@
+services:
+  redis:
+    init: true
+    image: redis
+    ports:
+      - 56379:6379
