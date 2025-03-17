@@ -9,27 +9,27 @@
     "postinstall": "prisma migrate dev --name init"
   },
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@faker-js/faker": "^9.4.0",
+    "@eslint/js": "^9.22.0",
+    "@faker-js/faker": "^9.6.0",
     "@types/benchmark": "^2.1.5",
     "@types/bunyan": "^1.8.11",
-    "@types/node": "^22.13.0",
-    "@types/sinon": "^17.0.3",
+    "@types/node": "^22.13.10",
+    "@types/sinon": "^17.0.4",
     "@types/tmp": "^0.2.6",
     "benchmark": "^2.1.4",
     "bunyan": "^1.8.15",
     "depcheck": "^1.4.7",
-    "eslint": "^9.19.0",
+    "eslint": "^9.22.0",
     "eslint-plugin-react": "^7.37.4",
-    "globals": "^15.14.0",
-    "prettier": "^3.4.2",
-    "prisma": "^6.3.0",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "prisma": "^6.5.0",
     "reflect-metadata": "^0.2.2",
     "tmp": "^0.2.3",
     "ts-node": "^10.9.2",
-    "typeorm": "^0.3.20",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.22.0",
+    "typeorm": "^0.3.21",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1",
     "winston": "^3.17.0"
   },
   "name": "ts-exercise",
@@ -39,8 +39,8 @@
   "author": "takkyuuplayer <takkyuuplayer@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "^6.3.0",
+    "@prisma/client": "^6.5.0",
     "redis": "^4.7.0",
-    "vitest": "^3.0.4"
+    "vitest": "^3.0.8"
   }
 }
