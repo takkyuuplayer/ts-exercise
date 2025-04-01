@@ -9,17 +9,17 @@
     "postinstall": "prisma migrate dev --name init"
   },
   "devDependencies": {
-    "@eslint/js": "^9.22.0",
+    "@eslint/js": "^9.23.0",
     "@faker-js/faker": "^9.6.0",
     "@types/benchmark": "^2.1.5",
     "@types/bunyan": "^1.8.11",
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.13.14",
     "@types/sinon": "^17.0.4",
     "@types/tmp": "^0.2.6",
     "benchmark": "^2.1.4",
     "bunyan": "^1.8.15",
     "depcheck": "^1.4.7",
-    "eslint": "^9.22.0",
+    "eslint": "^9.23.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
     "prettier": "^3.5.3",
@@ -29,7 +29,7 @@
     "ts-node": "^10.9.2",
     "typeorm": "^0.3.21",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.1",
+    "typescript-eslint": "^8.29.0",
     "winston": "^3.17.0"
   },
   "name": "ts-exercise",
@@ -41,6 +41,6 @@
   "dependencies": {
     "@prisma/client": "^6.5.0",
     "redis": "^4.7.0",
-    "vitest": "^3.0.8"
+    "vitest": "^3.1.1"
   }
 }
