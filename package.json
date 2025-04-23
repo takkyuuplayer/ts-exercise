@@ -13,6 +13,7 @@
     "@faker-js/faker": "^9.6.0",
     "@types/benchmark": "^2.1.5",
     "@types/bunyan": "^1.8.11",
+    "@types/express": "^5.0.1",
     "@types/node": "^22.13.14",
     "@types/sinon": "^17.0.4",
     "@types/tmp": "^0.2.6",
@@ -40,7 +41,10 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "express": "^5.1.0",
     "redis": "^4.7.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "vitest": "^3.1.1"
   }
 }
