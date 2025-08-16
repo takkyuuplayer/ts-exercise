@@ -1,7 +1,7 @@
 {
   "scripts": {
     "depcheck": "depcheck --ignores=@types/* ./",
-    "format": "biome format . --write",
+    "fmt": "biome format . --write",
     "lint": "biome lint . --write",
     "postinstall": "prisma migrate dev --name init",
     "start": "tsx src/index.ts",
