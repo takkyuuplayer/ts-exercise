@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import Benchmark from "benchmark";
 import bunyan from "bunyan";
 import tmp from "tmp";

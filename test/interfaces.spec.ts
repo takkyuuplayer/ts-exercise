@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("test/interfaces", () => {
   it("can have required parameters", () => {
@@ -138,7 +138,7 @@ describe("test/interfaces", () => {
             now.getMonth(),
             now.getDate(),
             h,
-            m
+            m,
           );
         }
         public setTime(d: Date) {
@@ -166,7 +166,7 @@ describe("test/interfaces", () => {
             now.getMonth(),
             now.getDate(),
             h,
-            m
+            m,
           );
         }
         public tick() {
@@ -183,7 +183,7 @@ describe("test/interfaces", () => {
             now.getMonth(),
             now.getDate(),
             h,
-            m
+            m,
           );
         }
         public tick() {
@@ -193,7 +193,7 @@ describe("test/interfaces", () => {
       function createClock(
         ctor: IClockConstructor,
         hour: number,
-        minute: number
+        minute: number,
       ): IClock {
         return new ctor(hour, minute);
       }

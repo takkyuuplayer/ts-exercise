@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 describe("test/type-compatibility", () => {
   describe("comparing 2 functions", () => {
     it("checks first part of argument", () => {
@@ -19,7 +20,7 @@ describe("test/type-compatibility", () => {
         Waiting,
       }
       let status = Status.Ready;
-      status = 1
+      status = 1;
       expect(status).toBe(Status.Waiting);
     });
     it("is not compatible with other Enum", () => {
@@ -27,16 +28,17 @@ describe("test/type-compatibility", () => {
         Ready,
         Waiting,
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       enum Color {
         Red,
         Blue,
         Green,
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const status = Status.Ready;
-      // status = Color.Green;  // Error
+      const _status = Status.Ready;
+      const _color = Color.Red; // Use the Color enum to avoid unused variable warning
+      // status = Color.Green;  // Error - would cause type incompatibility
+      expect(_status).toBe(Status.Ready);
+      expect(_color).toBe(Color.Red);
     });
   });
 });
