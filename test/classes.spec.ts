@@ -29,7 +29,7 @@ describe("test/classes", () => {
           public pub: string,
           private pri: string,
           protected pro: string,
-          readonly ro: string
+          readonly ro: string,
         ) {}
         public getRo() {
           return this.ro;
@@ -71,7 +71,8 @@ describe("test/classes", () => {
   });
   describe("static properties", () => {
     it("can be accessed through Class.propertyName", () => {
-      /* biome-ignore lint: */
+      // Using a static-only class for demonstration purposes in this test
+      /* biome-ignore lint/complexity/noStaticOnlyClass: needed for testing static property access */
       class Point {
         public static origin = { x: 0, y: 0 };
       }

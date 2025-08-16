@@ -34,7 +34,10 @@ describe("test/type-compatibility", () => {
       }
 
       const _status = Status.Ready;
-      // status = Color.Green;  // Error
+      const _color = Color.Red; // Use the Color enum to avoid unused variable warning
+      // status = Color.Green;  // Error - would cause type incompatibility
+      expect(_status).toBe(Status.Ready);
+      expect(_color).toBe(Color.Red);
     });
   });
 });

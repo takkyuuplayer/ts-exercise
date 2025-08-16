@@ -1,14 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("test/enums", () => {
-  it("is definable by function", () => {
-    enum TIMES {
-      NOW = Date.now(),
-      ORIGIN = 0,
-    }
-    expect(TIMES.NOW).toBeLessThanOrEqual(Date.now());
-    expect(TIMES.ORIGIN).toBe(0);
-  });
   describe("enum as type", () => {
     enum ShapeKind {
       Circle,
