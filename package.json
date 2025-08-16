@@ -1,35 +1,35 @@
 {
   "scripts": {
     "depcheck": "depcheck --ignores=@types/* ./",
+    "fmt": "biome format . --write",
     "lint": "eslint --fix",
+    "postinstall": "prisma migrate dev --name init",
     "start": "ts-node src/index.ts",
-    "fmt": "prettier --write {src,test}/**/*.ts",
     "test": "vitest",
-    "test:lint": "eslint",
-    "postinstall": "prisma migrate dev --name init"
+    "test:lint": "eslint"
   },
   "devDependencies": {
-    "@eslint/js": "^9.23.0",
+    "@biomejs/biome": "^2.2.0",
     "@faker-js/faker": "^9.6.0",
+    "@prisma/client": "^6.5.0",
     "@types/benchmark": "^2.1.5",
     "@types/bunyan": "^1.8.11",
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.17.2",
     "@types/sinon": "^17.0.4",
     "@types/tmp": "^0.2.6",
     "benchmark": "^2.1.4",
     "bunyan": "^1.8.15",
     "depcheck": "^1.4.7",
-    "eslint": "^9.23.0",
-    "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
-    "prettier": "^3.5.3",
     "prisma": "^6.5.0",
+    "redis": "^4.7.0",
     "reflect-metadata": "^0.2.2",
     "tmp": "^0.2.4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.20.4",
     "typeorm": "^0.3.21",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.29.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.1.1",
     "winston": "^3.17.0"
   },
   "name": "ts-exercise",
@@ -37,10 +37,5 @@
   "main": "index.js",
   "repository": "ssh://git@github.com/takkyuuplayer/ts-exercise.git",
   "author": "takkyuuplayer <takkyuuplayer@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@prisma/client": "^6.5.0",
-    "redis": "^4.7.0",
-    "vitest": "^3.1.1"
-  }
+  "license": "MIT"
 }
