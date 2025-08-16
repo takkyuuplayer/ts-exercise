@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 describe("test/type-compatibility", () => {
   describe("comparing 2 functions", () => {
     it("checks first part of argument", () => {

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("test/generics", () => {
   it("defines generic function with proper type information", () => {

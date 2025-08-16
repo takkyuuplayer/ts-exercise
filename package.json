@@ -2,13 +2,10 @@
   "scripts": {
     "build": "tsc --noEmit",
     "depcheck": "depcheck --ignores=@types/* ./",
-    "fmt": "biome format . --write",
-    "lint": "biome lint . --write --unsafe",
+    "lint": "biome check . --write --unsafe",
     "postinstall": "prisma migrate dev --name init",
     "watch": "tsx watch src/index.ts",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:lint": "biome lint ."
+    "test": "vitest run"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",
