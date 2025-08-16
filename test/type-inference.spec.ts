@@ -10,8 +10,8 @@ describe("type inference", () => {
   });
   it("uses union type", () => {
     const x = [0, 1, null];
-    const y: typeof x = [null];
-    const z: typeof x = [0];
+    const _y: typeof x = [null];
+    const _z: typeof x = [0];
     // const w: typeof x = ["string"]; // forbidden
   });
 });

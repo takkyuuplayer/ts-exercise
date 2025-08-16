@@ -2,7 +2,7 @@
   "scripts": {
     "depcheck": "depcheck --ignores=@types/* ./",
     "fmt": "biome format . --write",
-    "lint": "biome lint . --write",
+    "lint": "biome lint . --write --unsafe",
     "postinstall": "prisma migrate dev --name init",
     "test": "vitest run",
     "test:watch": "vitest",

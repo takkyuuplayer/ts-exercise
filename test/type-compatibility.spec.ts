@@ -33,7 +33,7 @@ describe("test/type-compatibility", () => {
         Green,
       }
 
-      const status = Status.Ready;
+      const _status = Status.Ready;
       // status = Color.Green;  // Error
     });
   });

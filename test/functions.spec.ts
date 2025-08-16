@@ -16,7 +16,7 @@ describe("test/functions", () => {
     it("defines optional parameter by ?", () => {
       function buildName(first: string, last?: string): string {
         if (last) {
-          return first + " " + last;
+          return `${first} ${last}`;
         }
         return first;
       }
@@ -26,7 +26,7 @@ describe("test/functions", () => {
     it("defines default parameter by =", () => {
       function buildName(first: string, last = "last"): string {
         if (last) {
-          return first + " " + last;
+          return `${first} ${last}`;
         }
         return first;
       }
@@ -36,7 +36,7 @@ describe("test/functions", () => {
     describe("default parameter", () => {
       it("can be placed anywhere", () => {
         function buildName(first = "first", last: string): string {
-          return first + " " + last;
+          return `${first} ${last}`;
         }
         expect(buildName(undefined, "last")).toBe("first last");
       });

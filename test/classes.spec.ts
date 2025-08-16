@@ -14,10 +14,6 @@ describe("test/classes", () => {
       }
 
       class Snake extends Animal {
-        constructor(name: string) {
-          // Must be called before accessing this.name
-          super(name);
-        }
         public move(distanceInMeters = 5) {
           return super.move(distanceInMeters);
         }
@@ -33,7 +29,7 @@ describe("test/classes", () => {
           public pub: string,
           private pri: string,
           protected pro: string,
-          readonly ro: string,
+          readonly ro: string
         ) {}
         public getRo() {
           return this.ro;
@@ -75,6 +71,7 @@ describe("test/classes", () => {
   });
   describe("static properties", () => {
     it("can be accessed through Class.propertyName", () => {
+      /* biome-ignore lint: */
       class Point {
         public static origin = { x: 0, y: 0 };
       }

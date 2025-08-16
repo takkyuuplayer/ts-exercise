@@ -3,10 +3,10 @@ import { describe, it, expect } from "vitest";
 describe("test/enums", () => {
   it("is definable by function", () => {
     enum TIMES {
-      NOW = new Date().getTime(),
+      NOW = Date.now(),
       ORIGIN = 0,
     }
-    expect(TIMES.NOW).toBeLessThanOrEqual(new Date().getTime());
+    expect(TIMES.NOW).toBeLessThanOrEqual(Date.now());
     expect(TIMES.ORIGIN).toBe(0);
   });
   describe("enum as type", () => {
