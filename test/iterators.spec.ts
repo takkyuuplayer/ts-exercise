@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("Iterables", () => {
   it("iterates whatever implements Symbol.iterator", () => {
@@ -30,7 +30,6 @@ describe("Iterables", () => {
       const arr = [1, 4, 9];
       let sum = "";
       for (const key in arr) {
-        // eslint-disable-next-line no-prototype-builtins
         if (Object.hasOwn(arr, key)) {
           sum += key;
         }

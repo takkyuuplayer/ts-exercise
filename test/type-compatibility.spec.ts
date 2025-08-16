@@ -27,14 +27,12 @@ describe("test/type-compatibility", () => {
         Ready,
         Waiting,
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       enum Color {
         Red,
         Blue,
         Green,
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const status = Status.Ready;
       // status = Color.Green;  // Error
     });
