@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 describe("symbol", () => {
   it("is immutable and unique", () => {
     expect(Symbol("key")).not.toEqual(Symbol("key"));

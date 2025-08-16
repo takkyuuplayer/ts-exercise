@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Benchmark from "benchmark";
 
 const suite = new Benchmark.Suite();
