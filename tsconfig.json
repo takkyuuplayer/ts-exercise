@@ -1,4 +1,8 @@
 {
+  "exclude": [
+    "astro-tutorial/**/*",
+    "nextjs-blog/**/*",
+  ],
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
