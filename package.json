@@ -4,8 +4,8 @@
     "fmt": "biome format . --write",
     "lint": "biome lint . --write",
     "postinstall": "prisma migrate dev --name init",
-    "start": "tsx src/index.ts",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "test:lint": "biome lint ."
   },
   "devDependencies": {
@@ -27,7 +27,6 @@
     "tmp": "^0.2.4",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.4",
-    "typeorm": "^0.3.21",
     "typescript": "^5.9.2",
     "vitest": "^3.1.1",
     "winston": "^3.17.0"
