@@ -33,7 +33,7 @@ describe("test/classes", () => {
           public pub: string,
           private pri: string,
           protected pro: string,
-          readonly ro: string
+          readonly ro: string,
         ) {}
         public getRo() {
           return this.ro;

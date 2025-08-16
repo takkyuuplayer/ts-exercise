@@ -31,7 +31,7 @@ describe("Iterables", () => {
       let sum = "";
       for (const key in arr) {
         // eslint-disable-next-line no-prototype-builtins
-        if (arr.hasOwnProperty(key)) {
+        if (Object.hasOwn(arr, key)) {
           sum += key;
         }
       }

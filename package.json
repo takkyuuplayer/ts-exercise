@@ -1,12 +1,12 @@
 {
   "scripts": {
     "depcheck": "depcheck --ignores=@types/* ./",
-    "fmt": "biome format . --write",
-    "lint": "eslint --fix",
+    "format": "biome format . --write",
+    "lint": "biome lint . --write",
     "postinstall": "prisma migrate dev --name init",
-    "start": "ts-node src/index.ts",
+    "start": "tsx src/index.ts",
     "test": "vitest",
-    "test:lint": "eslint"
+    "test:lint": "biome lint ."
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",

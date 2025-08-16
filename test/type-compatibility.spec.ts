@@ -19,7 +19,7 @@ describe("test/type-compatibility", () => {
         Waiting,
       }
       let status = Status.Ready;
-      status = 1
+      status = 1;
       expect(status).toBe(Status.Waiting);
     });
     it("is not compatible with other Enum", () => {
