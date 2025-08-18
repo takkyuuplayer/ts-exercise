@@ -12,7 +12,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm install
+      - run: npm install -g npm
+      - run: npm ci
       - run: npm run build --if-present
       - run: npx biome ci . --reporter=github --error-on-warnings
       - run: npm run depcheck
