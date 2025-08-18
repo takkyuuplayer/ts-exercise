@@ -1,6 +1,6 @@
-import express from "express";
 import { createServer } from "node:http";
-import { AddressInfo } from "node:net";
+import type { AddressInfo } from "node:net";
+import express from "express";
 import { Server } from "socket.io";
 import { io } from "socket.io-client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
