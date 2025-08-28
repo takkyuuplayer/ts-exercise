@@ -1,8 +1,8 @@
-import express from "express";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
+import express from "express";
 import { Server } from "socket.io";
-import { io, Socket } from "socket.io-client";
+import { io, type Socket } from "socket.io-client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const newServer = () => {
@@ -33,19 +33,21 @@ const newServer = () => {
 
 class Client {
   socket: Socket;
-  private messageQueue: Map<string, any[]> = new Map();
+  private messageQueue: Map<string, unknown[]> = new Map();
 
   constructor(addr: Parameters<typeof io>[0], opts?: Parameters<typeof io>[1]) {
     const socket = io(addr, {
       autoConnect: false,
-      ...opts
+      ...opts,
     });
-    
+
     socket.onAny((eventName: string, ...args: unknown[]) => {
       if (!this.messageQueue.has(eventName)) {
         this.messageQueue.set(eventName, []);
       }
-      this.messageQueue.get(eventName)!.push(args.length === 1 ? args[0] : args);
+      this.messageQueue
+        .get(eventName)
+        ?.push(args.length === 1 ? args[0] : args);
     });
 
     this.socket = socket;
@@ -104,7 +106,7 @@ describe("socket.io", () => {
     const msg = await client.wait("message");
     expect(msg).toEqual({
       namespace: "/",
-        token: "123",
+      token: "123",
     });
   });
 
@@ -119,8 +121,7 @@ describe("socket.io", () => {
     const msg = await client.wait("message");
     expect(msg).toEqual({
       namespace: "/my-namespace",
-        token: "123",
+      token: "123",
     });
   });
 });
-
