@@ -1,6 +1,6 @@
+import express from "express";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
-import express from "express";
 import { Server } from "socket.io";
 import { io, type Socket } from "socket.io-client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -32,28 +32,24 @@ const newServer = () => {
 };
 
 class Client {
-  socket: Socket;
-  private messageQueue: Map<string, unknown[]> = new Map();
+  private socket: Socket;
+  private messageQueue = new Map<string, unknown[]>();
 
   constructor(addr: Parameters<typeof io>[0], opts?: Parameters<typeof io>[1]) {
-    const socket = io(addr, {
-      autoConnect: false,
-      ...opts,
-    });
+    this.socket = io(addr, opts);
 
-    socket.onAny((eventName: string, ...args: unknown[]) => {
-      if (!this.messageQueue.has(eventName)) {
-        this.messageQueue.set(eventName, []);
-      }
-      this.messageQueue
-        .get(eventName)
-        ?.push(args.length === 1 ? args[0] : args);
+    this.socket.onAny((event, ...args) => {
+      const queue = this.messageQueue.get(event) ?? [];
+      queue.push(args.length === 1 ? args[0] : args);
+      this.messageQueue.set(event, queue);
     });
-
-    this.socket = socket;
   }
 
-  async connect(): Promise<void> {
+  async waitConnect(): Promise<void> {
+    if (this.socket.connected) {
+      return Promise.resolve();
+    }
+
     return new Promise((resolve) => {
       this.socket.once("connect", () => {
         expect(this.socket.connected).toBe(true);
@@ -64,7 +60,7 @@ class Client {
     });
   }
 
-  async wait(eventName: string): Promise<unknown> {
+  async waitEvent(eventName: string): Promise<unknown> {
     const queue = this.messageQueue.get(eventName);
     if (queue && queue.length > 0) {
       return Promise.resolve(queue.shift());
@@ -86,7 +82,6 @@ describe("socket.io", () => {
     address = await new Promise<AddressInfo>((resolve) => {
       server.listen(0, () => {
         const addr = server.address() as AddressInfo;
-        console.log(addr);
         resolve(addr);
       });
     });
@@ -101,9 +96,9 @@ describe("socket.io", () => {
         token: "123",
       },
     });
-    await client.connect();
+    await client.waitConnect();
 
-    const msg = await client.wait("message");
+    const msg = await client.waitEvent("message");
     expect(msg).toEqual({
       namespace: "/",
       token: "123",
@@ -116,9 +111,9 @@ describe("socket.io", () => {
         token: "123",
       },
     });
-    await client.connect();
+    await client.waitConnect();
 
-    const msg = await client.wait("message");
+    const msg = await client.waitEvent("message");
     expect(msg).toEqual({
       namespace: "/my-namespace",
       token: "123",
