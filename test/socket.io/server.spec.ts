@@ -1,8 +1,8 @@
+import express from "express";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
-import express from "express";
 import { Server } from "socket.io";
-import { io } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 const newServer = () => {
@@ -15,17 +15,66 @@ const newServer = () => {
   });
 
   io.on("connection", (socket) => {
-    console.log("server: connected to default namespace");
-    console.log(socket.handshake.query);
+    socket.emit("message", {
+      namespace: socket.nsp.name,
+      token: socket.handshake.query.token,
+    });
   });
 
   io.of("/my-namespace").on("connection", (socket) => {
-    console.log("server: connected to my-namespace");
-    console.log(socket.handshake.query);
+    socket.emit("message", {
+      namespace: socket.nsp.name,
+      token: socket.handshake.query.token,
+    });
   });
 
   return server;
 };
+
+class Client {
+  socket: Socket;
+  private messageQueue: Map<string, any[]> = new Map();
+
+  constructor(addr: Parameters<typeof io>[0], opts?: Parameters<typeof io>[1]) {
+    const socket = io(addr, {
+      autoConnect: false,
+      ...opts
+    });
+    
+    socket.onAny((eventName: string, ...args: unknown[]) => {
+      if (!this.messageQueue.has(eventName)) {
+        this.messageQueue.set(eventName, []);
+      }
+      this.messageQueue.get(eventName)!.push(args.length === 1 ? args[0] : args);
+    });
+
+    this.socket = socket;
+  }
+
+  async connect(): Promise<void> {
+    return new Promise((resolve) => {
+      this.socket.once("connect", () => {
+        expect(this.socket.connected).toBe(true);
+        resolve();
+      });
+
+      this.socket.connect();
+    });
+  }
+
+  async wait(eventName: string): Promise<unknown> {
+    const queue = this.messageQueue.get(eventName);
+    if (queue && queue.length > 0) {
+      return Promise.resolve(queue.shift());
+    }
+
+    return new Promise((resolve) => {
+      this.socket.once(eventName, (msg) => {
+        resolve(msg);
+      });
+    });
+  }
+}
 
 describe("socket.io", () => {
   const server = newServer();
@@ -44,35 +93,34 @@ describe("socket.io", () => {
     server.close();
   });
 
-  it("should create a server", async () => {
-    const socket = io(`http://localhost:${address.port}`, {
+  it("connects default ns", async () => {
+    const client = new Client(`http://localhost:${address.port}`, {
       query: {
         token: "123",
       },
     });
+    await client.connect();
 
-    await new Promise((resolve) => {
-      socket.on("connect", () => {
-        console.log("client: connected to default namespace");
-        expect(socket.connected).toBe(true);
-        socket.disconnect();
-        resolve(true);
-      });
+    const msg = await client.wait("message");
+    expect(msg).toEqual({
+      namespace: "/",
+        token: "123",
     });
+  });
 
-    const socket2 = io(`http://localhost:${address.port}/my-namespace`, {
+  it("connects ns", async () => {
+    const client = new Client(`http://localhost:${address.port}/my-namespace`, {
       query: {
-        token: "456",
+        token: "123",
       },
     });
+    await client.connect();
 
-    await new Promise((resolve) => {
-      socket2.on("connect", () => {
-        console.log("client: connected to my-namespace");
-        expect(socket2.connected).toBe(true);
-        socket2.disconnect();
-        resolve(true);
-      });
+    const msg = await client.wait("message");
+    expect(msg).toEqual({
+      namespace: "/my-namespace",
+        token: "123",
     });
   });
 });
+
