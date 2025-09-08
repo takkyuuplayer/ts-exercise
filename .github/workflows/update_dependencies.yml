@@ -19,6 +19,7 @@ jobs:
           npm update
           npm audit fix
 
+          npx biome migrate --write
       # https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#authenticating-with-github-app-generated-tokens
       - uses: actions/create-github-app-token@v2
         id: generate-token
