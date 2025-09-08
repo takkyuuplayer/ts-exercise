@@ -1,5 +1,5 @@
 import { createClient, defineScript } from "redis";
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 describe("defineScript", async () => {
   const client = createClient({
@@ -28,11 +28,11 @@ describe("defineScript", async () => {
     await client.connect();
     await client.flushAll();
   });
+  afterAll(() => {
+    client.close();
+  });
 
   it("should work", async () => {
-    await client.connect();
-    await client.flushAll();
-
     await client.set("mykey", "5");
     const [mykey, myotherkey] = await client.mincr("mykey", "myotherkey", 10);
 
