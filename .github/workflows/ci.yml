@@ -10,7 +10,7 @@ jobs:
       - run: docker compose up --pull always -d
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
       - run: npm ci
       - run: npm run build --if-present
