@@ -1,22 +1,23 @@
 version: 2
 
-common: &common
-  directories:
-    - "**/*"
-  schedule:
-    interval: "cron"
-    cronjob: "0 0 1 * *"
-
 updates:
   - package-ecosystem: "github-actions"
+    directories:
+      - "**/*"
+    schedule:
+      interval: "cron"
+      cronjob: "0 0 1 * *"
     groups:
       github-actions:
         patterns:
           - '*'
-    <<: *common
   - package-ecosystem: "npm"
+    directories:
+      - "**/*"
+    schedule:
+      interval: "cron"
+      cronjob: "0 0 1 * *"
     groups:
       npm:
         patterns:
           - '*'
-    <<: *common
