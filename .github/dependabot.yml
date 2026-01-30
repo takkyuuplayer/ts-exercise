@@ -4,6 +4,12 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
-    reviewers:
-      - takkyuuplayer
+      interval: "cron"
+      cron: "0 0 1 * *"
+    groups:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      cron: "0 0 1 * *"
+    groups:
