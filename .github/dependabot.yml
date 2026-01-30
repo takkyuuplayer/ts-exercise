@@ -5,11 +5,11 @@ updates:
     directory: "/"
     schedule:
       interval: "cron"
-      cron: "0 0 1 * *"
+      cronjob: "0 0 1 * *"
     groups:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "cron"
-      cron: "0 0 1 * *"
+      cronjob: "0 0 1 * *"
     groups:
