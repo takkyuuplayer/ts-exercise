@@ -7,9 +7,15 @@ updates:
       interval: "cron"
       cronjob: "0 0 1 * *"
     groups:
+      github-actions:
+        patterns:
+          - '*'
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "cron"
       cronjob: "0 0 1 * *"
     groups:
+      npm:
+        patterns:
+          - '*'
