@@ -4,6 +4,7 @@
     "depcheck": "depcheck --ignores=@types/* ./",
     "lint": "biome check . --write --unsafe",
     "watch": "tsx watch src/index.ts",
+    "pretest": "echo REDIS_URL=redis://$(docker compose port redis 6379) > .env",
     "test": "vitest run"
   },
   "devDependencies": {
