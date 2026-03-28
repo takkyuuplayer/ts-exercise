@@ -3,7 +3,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 describe("defineScript", async () => {
   const client = createClient({
-    url: "redis://localhost:56379",
+    url: process.env.REDIS_URL as string,
     scripts: {
       mincr: defineScript({
         NUMBER_OF_KEYS: 2,
