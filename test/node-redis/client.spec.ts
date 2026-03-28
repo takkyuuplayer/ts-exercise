@@ -1,17 +1,9 @@
-import { execFileSync } from "node:child_process";
 import { createClient, defineScript } from "redis";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-function getRedisUrl(): string {
-  const output = execFileSync("docker", ["compose", "port", "redis", "6379"], {
-    encoding: "utf-8",
-  }).trim();
-  return `redis://${output}`;
-}
-
 describe("defineScript", async () => {
   const client = createClient({
-    url: getRedisUrl(),
+    url: process.env.REDIS_URL ?? "redis://localhost:6379",
     scripts: {
       mincr: defineScript({
         NUMBER_OF_KEYS: 2,
