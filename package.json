@@ -8,11 +8,11 @@
     "test": "set -a && . ./.env && vitest run"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.4",
+    "@biomejs/biome": "^2.4.10",
     "@types/benchmark": "^2.1.5",
     "@types/bunyan": "^1.8.11",
     "@types/express": "^5.0.6",
-    "@types/node": "^25.3.3",
+    "@types/node": "^25.5.0",
     "@types/sinon": "^21.0.0",
     "@types/tmp": "^0.2.6",
     "benchmark": "^2.1.4",
@@ -24,8 +24,8 @@
     "socket.io-client": "^4.8.3",
     "tmp": "^0.2.5",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.18",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2",
     "winston": "^3.19.0"
   },
   "name": "ts-exercise",
