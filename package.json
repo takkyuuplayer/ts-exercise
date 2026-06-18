@@ -8,7 +8,7 @@
     "test": "set -a && . ./.env && vitest run"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.16",
+    "@biomejs/biome": "^2.5.0",
     "@types/benchmark": "^2.1.5",
     "@types/bunyan": "^1.8.11",
     "@types/express": "^5.0.6",
