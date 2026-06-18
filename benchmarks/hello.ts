@@ -9,10 +9,10 @@ suite
     "Hello World!".indexOf("o") > -1;
   })
   // add listeners
-  .on("cycle", (event: any) => {
+  .on("cycle", (event: Benchmark.Event) => {
     console.log(String(event.target));
   })
-  .on("complete", function (this: any) {
+  .on("complete", function (this: Benchmark.Suite) {
     console.log(`Fastest is ${this.filter("fastest").map("name")}`);
   })
   // run async
