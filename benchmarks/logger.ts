@@ -17,17 +17,17 @@ const bunyanLogger = bunyan.createLogger({
 
 const suite = new Benchmark.Suite();
 suite
-  .add("winston.info", function () {
+  .add("winston.info", () => {
     winstonLogger.info("Hello World");
   })
-  .add("bunyan.info", function () {
+  .add("bunyan.info", () => {
     bunyanLogger.info("Hello World");
   })
-  .on("cycle", function (event: any) {
+  .on("cycle", (event: Benchmark.Event) => {
     console.log(String(event.target));
   })
-  .on("complete", function (this: any) {
-    console.log("Fastest is " + this.filter("fastest").map("name"));
+  .on("complete", function (this: Benchmark.Suite) {
+    console.log(`Fastest is ${this.filter("fastest").map("name")}`);
   })
   // run async
   .run({ async: true });
