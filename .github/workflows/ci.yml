@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: docker compose up --pull always -d
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: latest
           cache: npm
