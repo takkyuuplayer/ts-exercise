@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 
 describe("Iterables", () => {
   it("iterates whatever implements Symbol.iterator", () => {

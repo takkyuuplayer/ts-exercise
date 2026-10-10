@@ -1,5 +1,5 @@
 import { createClient, defineScript } from "redis";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vite-plus/test";
 
 describe("defineScript", async () => {
   const client = createClient({

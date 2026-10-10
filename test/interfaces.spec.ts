@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 
 describe("test/interfaces", () => {
   it("can have required parameters", () => {
@@ -133,13 +133,7 @@ describe("test/interfaces", () => {
         constructor(h: number, m: number) {
           const now = new Date();
 
-          this.currentTime = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            h,
-            m,
-          );
+          this.currentTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m);
         }
         public setTime(d: Date) {
           this.currentTime = d;
@@ -161,13 +155,7 @@ describe("test/interfaces", () => {
         constructor(h: number, m: number) {
           const now = new Date();
 
-          this.currentTime = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            h,
-            m,
-          );
+          this.currentTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m);
         }
         public tick() {
           return "beep beep";
@@ -178,23 +166,13 @@ describe("test/interfaces", () => {
         constructor(h: number, m: number) {
           const now = new Date();
 
-          this.currentTime = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            h,
-            m,
-          );
+          this.currentTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m);
         }
         public tick() {
           return "tick tock";
         }
       }
-      function createClock(
-        ctor: IClockConstructor,
-        hour: number,
-        minute: number,
-      ): IClock {
+      function createClock(ctor: IClockConstructor, hour: number, minute: number): IClock {
         return new ctor(hour, minute);
       }
 

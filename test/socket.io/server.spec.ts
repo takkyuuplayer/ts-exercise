@@ -3,7 +3,7 @@ import type { AddressInfo } from "node:net";
 import express from "express";
 import { Server } from "socket.io";
 import { io, type Socket } from "socket.io-client";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vite-plus/test";
 
 const newServer = () => {
   const app = express();

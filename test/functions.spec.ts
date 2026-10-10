@@ -1,12 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 
 describe("test/functions", () => {
   describe("function type", () => {
     it("can do contextual typing", () => {
-      const add: (a: number, b: number) => number = (
-        x: number,
-        y: number,
-      ): number => x + y;
+      const add: (a: number, b: number) => number = (x: number, y: number): number => x + y;
 
       const sub = (x: number, y: number): number => x - y;
 
